@@ -35,10 +35,8 @@ router.put('/:id',(req,res,next)=>{
         returning : true
     })
     .spread((row,updatedCampus)=>{
-        console.log(updatedCampus[0].id);
         return Campus.findById(updatedCampus[0].id)
     }).then(foundCampus=>{
-        console.log(foundCampus);
         res.json(foundCampus);
     })
     .catch(next);

@@ -51,7 +51,6 @@ const AllStudent = (props) => {
 }
     
 const mapStateToProps = (state) =>{
-    console.log(state);
     return {
         students : state.student,
         campus : state.campus

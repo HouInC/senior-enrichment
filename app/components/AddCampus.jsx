@@ -41,7 +41,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
             if (event.target.image.value !== "") {
                 campus[event.target.image.name] = event.target.image.value;
             }
-            //console.log(campus);
             dispatch(postCampus(campus, ownProps.history));
             event.target.name.value = '';
             event.target.image.value = '';

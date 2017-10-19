@@ -62,7 +62,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
                 alert('nothing update, redirect to the current campus page');
                 ownProps.history.push(`/campus/${id}`);
             }
-            console.log(newCampus);
             event.target.name.value = '';
             event.target.image.value = '';
         }

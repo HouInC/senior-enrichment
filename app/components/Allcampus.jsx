@@ -25,7 +25,6 @@ const Allcampus = (props) => (
 )
 
 const mapStateToProps = (state) => {
-    console.log(state);
     return {
         campus: state.campus
     }
