@@ -1,5 +1,6 @@
 const db =require('../index');
 const Sequelize =require('sequelize')
+const Campus = require('./campus');
 
 const Student = db.define('student',{
     name : {
@@ -16,6 +17,11 @@ const Student = db.define('student',{
             isEmail : true,
         }
     }
+},
+    {
+        defaultScope: { 
+		    include: [Campus]
+        }
 })
 
 
