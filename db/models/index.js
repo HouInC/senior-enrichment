@@ -10,7 +10,7 @@ const db = require('../index')
 // This is also probably a good place for you to set up your associations
 
 Campus.hasMany(Student, { onDelete : 'CASCADE' , hooks: true});
-Student.belongsTo(Campus,{foreignKey : {allowNull : false},onDelete : 'CASCADE'});
+Student.belongsTo(Campus,{foreignKey : {allowNull : false} , onDelete : 'CASCADE'});
 
 
 module.exports = {

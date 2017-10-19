@@ -12,10 +12,10 @@ router.get('/',(req,res,next)=>{
 router.post('/add',(req,res,next)=>{
     Student.create(req.body)
         .then(createStudent=>{
-            return Student.findById(createStudent.id)
+             return createStudent.reload();
         })
-        .then(findStudent=>{
-            res.json(findStudent);
+        .then(loadStudent=>{
+            return res.json(loadStudent);
         })
         .catch(next)
 })

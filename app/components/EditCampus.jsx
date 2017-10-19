@@ -57,7 +57,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
             }
             if (Object.keys(newCampus).length > 0) {
                 dispatch(UpdateCampus(id, newCampus, ownProps.history));
-                dispatch(fetchStudent());
+                // dispatch(fetchStudent());
             } else {
                 alert('nothing update, redirect to the current campus page');
                 ownProps.history.push(`/campus/${id}`);

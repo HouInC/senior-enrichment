@@ -48,7 +48,7 @@ export function fetchStudent() {
         return axios.get('/api/student')
             .then(res => res.data)
             .then(allStudent => {
-                const sorted = allStudent.sort((a,b)=>{
+                allStudent.sort((a,b)=>{
                     return a.id - b.id
                 })
                 const action = getStudent(allStudent);

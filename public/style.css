@@ -19,3 +19,7 @@
 body{
     background-image: url('https://previews.123rf.com/images/kittikornphongok/kittikornphongok1505/kittikornphongok150501239/40020517-Colorful-Watercolor-Grunge-texture-background-Soft-background--Stock-Photo.jpg');
 }
+
+.fix {
+    position: fixed;
+}

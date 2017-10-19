@@ -77,7 +77,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         },
         handleRemove: (id) => {
             dispatch(deleteCampus(id, ownProps.history));
-            dispatch(fetchStudent());
+            // dispatch(fetchStudent());
         }
     }
 }

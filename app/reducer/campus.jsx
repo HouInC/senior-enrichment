@@ -1,8 +1,10 @@
 import axios from 'axios';
+import { fetchStudent } from './'
 const GET_CAMPUS = 'GET_CAMPUS';
 const ADD_CAMPUS = 'ADD_CAMPUS';
 const REMOVE_CAMPUS = 'REMOVE_CAMPUS';
 const UPDATE_CAMPUS = 'UPDATE_CAMPUS';
+
 
 export const getCampus = (campus) => {
     return {
@@ -18,16 +20,16 @@ export const addCampus = (campus) => {
     }
 }
 
-export const removeCampus = (id) =>{
+export const removeCampus = (id) => {
     return {
-        type : REMOVE_CAMPUS,
+        type: REMOVE_CAMPUS,
         id
     }
 }
 
 export const editCampus = (campus) => {
     return {
-        type : UPDATE_CAMPUS,
+        type: UPDATE_CAMPUS,
         campus
     }
 }
@@ -37,6 +39,7 @@ export function fetchCampus() {
         return axios.get('/api/campus')
             .then(res => res.data)
             .then(campus => {
+                campus.sort((a, b) => a.id - b.id)
                 const action = getCampus(campus);
                 dispatch(action);
             });
@@ -54,43 +57,51 @@ export function postCampus(campus, history) {
     };
 }
 
-export function deleteCampus(id,history){
-    return function(dispatch) {
+export function deleteCampus(id, history) {
+    return function (dispatch) {
         dispatch(removeCampus(id));
         axios.delete(`/api/campus/${id}`)
-        .catch(console.error);
+            .then(() => {
+                dispatch(fetchStudent());
+            })
+            .catch(console.error);
         history.push('/');
         return;
     }
 }
 
-export function UpdateCampus(id,campus,history){
-    return function(dispatch){
-        return axios.put(`/api/campus/${id}`,campus)
-            .then(res=>res.data)
-            .then(updatedCampus=>{
+export function UpdateCampus(id, campus, history) {
+    return function (dispatch) {
+        axios.put(`/api/campus/${id}`, campus)
+            .then(res => res.data)
+            .then(updatedCampus => {
                 dispatch(editCampus(updatedCampus));
-                history.push(`/campus/${id}`);
             })
+            .then(() => {
+                dispatch(fetchStudent());
+            })
+            .catch(console.error)
+        history.push(`/campus/${id}`);
+        return;
     }
 }
 
-export default function reducer (campuses = [], action) {
-      switch (action.type) {
+export default function reducer(campuses = [], action) {
+    switch (action.type) {
         case GET_CAMPUS:
-          return action.campus;
+            return action.campus;
         case ADD_CAMPUS:
-          return campuses.concat(action.campus);
+            return campuses.concat(action.campus);
         case REMOVE_CAMPUS:
-         return campuses.filter(campus=>{
-             return +campus.id !== +action.id
-         })
-         case UPDATE_CAMPUS:
-         return campuses.map(campus=>{
-             return campus.id===action.campus.id ? action.campus : campus;
-         })
+            return campuses.filter(campus => {
+                return +campus.id !== +action.id
+            })
+        case UPDATE_CAMPUS:
+            return campuses.map(campus => {
+                return campus.id === action.campus.id ? action.campus : campus;
+            })
         default:
-          return campuses;
-      }
-    
+            return campuses;
+    }
+
 }
