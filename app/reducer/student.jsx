@@ -64,9 +64,7 @@ export function postStudent(student, history) {
         return axios.post('/api/student/add', student)
             .then(res => res.data)
             .then(newStudent => {
-                //newStudent only have campus ID instead of whole campus object
                 dispatch(addStudent(newStudent));
-                //dispatch(fetchStudent());
                 history.push(`/campus/${newStudent.campusId}`);
             });
     };
@@ -77,7 +75,6 @@ export function UpdateStudent(id,student,history){
         return axios.put(`/api/student/${id}`,student)
             .then(res=>res.data)
             .then(updatedStudent=>{
-                //console.log(updatedStudent);
                 dispatch(updateStudent(updatedStudent));
                 history.push(`/student/${id}`);
             })

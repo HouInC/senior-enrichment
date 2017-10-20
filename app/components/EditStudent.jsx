@@ -73,7 +73,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
             if (Object.keys(newStudent).length > 0) {
                 dispatch(UpdateStudent(id, newStudent, ownProps.history));
             } else {
-                alert('nothing update, redirect to homepage');
+                alert('nothing update, redirect to current student page');
                 ownProps.history.push(`/student/${id}`);
             }
         }

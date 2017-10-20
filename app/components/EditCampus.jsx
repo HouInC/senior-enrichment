@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { UpdateCampus,fetchStudent } from '../reducer';
 
+//didn't use class to have a local state handle the form;
+
 const EditCampus = (props) => {
     const id = props.match.params.id;
     const campus = props.campus.find(oneCampus => {
@@ -48,6 +50,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         handleSubmit: (event, id) => {
             event.preventDefault();
+            //long because didn't use the local state;
             const newCampus = {};
             if (event.target.name.value) {
                 newCampus[event.target.name.name] = event.target.name.value;
@@ -57,7 +60,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
             }
             if (Object.keys(newCampus).length > 0) {
                 dispatch(UpdateCampus(id, newCampus, ownProps.history));
-                // dispatch(fetchStudent());
             } else {
                 alert('nothing update, redirect to the current campus page');
                 ownProps.history.push(`/campus/${id}`);
