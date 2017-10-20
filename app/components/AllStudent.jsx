@@ -10,7 +10,7 @@ const AllStudent = (props) => {
         <Link to="/student/add">
             <button className='btn btn-success' type="Submit">Add Student</button>
         </Link>
-        <table className="table">
+        <table className="table table-hover table-bordered">
         <thead>
         <tr>
         <th>#</th>
@@ -40,7 +40,7 @@ const AllStudent = (props) => {
                         </Link>
                     </button>
                 </td>
-                <td><button type='sumbit' onClick={()=>{props.handleClick(student.id)}}>x</button></td>
+                <td><button type='submit' onClick={()=>{props.handleClick(student.id)}}><i className="fa fa-trash-o" aria-hidden="true"></i></button></td>
                 </tr>
             ))
         }

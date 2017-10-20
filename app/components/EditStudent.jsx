@@ -42,7 +42,7 @@ const EditStudent = (props) => {
                         }
                     </select>
                 </div>
-                <button type="submit" className="btn btn-block btn-primary">Sumbit</button>
+                <button type="submit" className="btn btn-block btn-primary">Submit</button>
             </form>
             <button type='submit' onClick={()=>{props.history.goBack()}} >Cancel</button>
         </div>
@@ -74,7 +74,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
                 dispatch(UpdateStudent(id, newStudent, ownProps.history));
             } else {
                 alert('nothing update, redirect to homepage');
-                ownProps.history.push(`/student/{id}`);
+                ownProps.history.push(`/student/${id}`);
             }
         }
     }

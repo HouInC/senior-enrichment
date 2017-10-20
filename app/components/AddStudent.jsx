@@ -37,7 +37,7 @@ const AddStudent = (props) => {
                             }
                         </select>
                     }
-                    <button type="submit" className="btn btn-block btn-primary">Sumbit</button>
+                    <button type="submit" className="btn btn-block btn-primary">Submit</button>
                 </form>
                 <button type='submit' onClick={() => { props.history.goBack() }} >Cancel</button>
             </div>
